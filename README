@@ -1,0 +1,6 @@
+All the requirements are in the requirements.txt, pip install -r requirements.txt and proceed.
+Just run the code, the db is already pre populated with a few entries. 
+If you wish to create a new db then first delete the db in the instance.
+Then in terminal type "python" then press enter.
+Then type "from app import *" and then press enter.
+Then type "db.create_all()" and then press enter.

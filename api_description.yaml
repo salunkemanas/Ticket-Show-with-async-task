@@ -1,0 +1,158 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: User API
+  description: A simple API to login or manage user details.
+paths:
+  /user/new:
+    post:
+      summary: Creates a new User
+      responses:
+        "200":
+          description: Registered successfully
+  /user/login:
+    post:
+      summary: Login a user
+      responses:
+        "200":
+          description: access_token for logged in user
+        "401":
+          description: Bad credentials
+ 
+  /user/venue:
+    get:
+      summary: Show Details of user venue
+      responses:
+        "200":
+          description: Success
+    post:
+      summary: Post Details of user venue
+      responses:
+        "200":
+          description: Success
+
+  /user/book/{id}:
+    get:
+      summary: Get booking details for given ID
+      responses:
+        "200":
+          description: Success
+    post:
+      summary: Post booking details for given ID
+      responses:
+        "200":
+          description: Tickets booked successfully
+    
+  /user/bookings:
+    get:
+      summary: Get all bookings of user
+      responses:
+        "200":
+          description: Success
+    post:
+      summary: Post all bookings of user
+      responses:
+        "200":
+          description: Success
+
+  /admin/new:
+    post:
+      summary: Creates a new Admin
+      responses:
+        "200":
+          description: Registered successfully
+  /admin/login:
+    post:
+      summary: Login an admin
+      responses:
+        "200":
+          description: access_token for logged in admin
+        "401":
+          description: Bad credentials 
+  /admin/venue:
+    get:
+      summary: Show Details of venue
+      responses:
+        "200":
+          description: Success
+    post:
+      summary: Post Details of venue
+      responses:
+        "200":
+          description: Success
+  /admin/add_venue:
+    post:
+      summary: Add a venue
+      responses:
+        "200":
+          description: Venue added successfully
+  /admin/edit_venue/{id}:
+    post:
+      summary: Edit a venue with given ID
+      responses:
+        "200":
+          description: Venue edited successfully
+  /admin/venue/delete/{id}:
+    delete:
+      summary: Delete a venue with given ID
+      responses:
+        "200":
+          description: Venue deleted successfully
+  /admin/add_show/{vid}:
+    post:
+      summary: Add a show for a venue with given ID
+      responses:
+        "200":
+          description: Show added successfully
+  /admin/edit_show/{id}:
+    post:
+      summary: Edit a show with given ID
+      responses:
+        "200":
+          description: Show edited successfully
+  /admin/show/delete/{id}:
+    delete:
+      summary: Delete a show with given ID
+      responses:
+        "200":
+          description: Show deleted successfully
+
+  /search:
+    get:
+        summary: Search venues and shows
+        responses:
+          "200":
+            description: Success
+    post:
+        summary: Search venues and shows
+        responses:
+          "200":
+            description: Success
+
+  /venue/export/{id}:
+    get:
+        summary: Triggers a celery job to generate a csv file
+        responses:
+          default:
+            description: Returns a task ID, state and result
+
+  /status/{id}:
+    get:
+          summary: Check the status of a celery job
+          responses:
+            default:
+              description: Returns a task ID, state and result
+  
+  /download-file:
+    get:
+      summary: Downloads a file
+      responses:
+        default:
+          description: Returns a file                                             
+
+  /:
+    get:
+      summary: Returns login page
+      responses:
+        "200":
+          description: Returns the login page
